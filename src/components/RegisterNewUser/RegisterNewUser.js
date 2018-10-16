@@ -52,13 +52,12 @@ import Page2 from './RegisterNewPage2';
       nameProblem: 'Please provide first and last name',
       genderProblem: "Please select your gender, or choose 'I would rather not say'"
     }
-    this.dynamicConfig = DynamicConfigService;
   }
 
   componentWillMount() {
-    const raw_config = this.dynamicConfig.getDynamicConfig(this.props.history.location.pathname);
-    if(raw_config) {
-      this.dynamicConfig.setConfigFromRaw(raw_config)
+    this.dynamicConfig = DynamicConfigService;
+    if(this.props.match.params.dynamicConfig) {
+      this.dynamicConfig.setConfigFromRaw(this.dynamicConfig.encodeConfig(this.dynamicConfig.getNextRedirect()))
     }
   }
 
@@ -74,7 +73,7 @@ import Page2 from './RegisterNewPage2';
   handleNext = () => {
     const {stepIndex} = this.state;
 
-    // this.dynamicConfig.setConfigFromRaw(this.dynamicConfig.encodeConfig(this.dynamicConfig.getNextRedirect()))
+    this.dynamicConfig.setConfigFromRaw(this.dynamicConfig.encodeConfig(this.dynamicConfig.getNextRedirect()))
 
     if (stepIndex === 0){
       this.setState({

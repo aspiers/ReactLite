@@ -22,7 +22,6 @@ import './SurveyFlow.css'
       networkError: false,
       activeTab: 'vote'
     }
-    this.dynamicConfig = DynamicConfigService;
 
     this.onVote = this.onVote.bind(this)
     this.navigateNext = this.navigateNext.bind(this)
@@ -49,6 +48,10 @@ import './SurveyFlow.css'
 
     let currentItemIndex = this.props.match.params.itemNumber;
     this.loadCollectionQuestions(currentItemIndex);
+    this.dynamicConfig = DynamicConfigService;
+    if(this.props.match.params.dynamicConfig) {
+      this.dynamicConfig.setConfigFromRaw(this.props.match.params.dynamicConfig)
+    }
 
     this.setState({activeTab: this.props.match.params.activeTab})
 
@@ -106,7 +109,7 @@ import './SurveyFlow.css'
 
   onVote(i, votingMode) {
     if(!this.props.UserStore.userData.has("id")){
-      this.props.history.push("/login/" + this.dynamicConfig.getEncodedConfig());
+      this.props.history.push("/login/" + this.dynamicConfig.encodeConfig(this.props.history.location.pathname.substring(0, this.props.history.location.pathname.lastIndexOf('/'))))
     } else {
       let question = this.props.QuestionStore.questions.get(this.state.collectionItems[this.props.match.params.itemNumber].object_id)
       const userLocation = this.props.UserStore.generalAnalyticsData.get('analytics_location')
@@ -137,12 +140,12 @@ import './SurveyFlow.css'
       this.navigateEnd2()
     } else {
       this.loadNextQuestionsPage(parseInt(this.props.match.params.itemNumber, 10));
-      this.props.history.push('/survey/' + this.props.match.params.surveyId + '/flow/' + (parseInt(this.props.match.params.itemNumber, 10) + 1) + '/vote/' + this.dynamicConfig.getEncodedConfig())
+      this.props.history.push('/survey/' + this.props.match.params.surveyId + '/flow/' + (parseInt(this.props.match.params.itemNumber, 10) + 1) + '/vote/' + this.dynamicConfig.encodeConfig())
     }
   }
 
   navigatePrevious() {
-    this.props.history.push('/survey/' + this.props.match.params.surveyId + '/flow/' + (parseInt(this.props.match.params.itemNumber, 10) - 1) + '/vote/' + this.dynamicConfig.getEncodedConfig())
+    this.props.history.push('/survey/' + this.props.match.params.surveyId + '/flow/' + (parseInt(this.props.match.params.itemNumber, 10) - 1) + '/vote/' + this.dynamicConfig.encodeConfig())
   }
 
   navigateN(n) {
@@ -151,22 +154,20 @@ import './SurveyFlow.css'
       this.navigateEnd2()
     } else {
       this.loadNextQuestionsPage(n);
-      const nextUrl = `/survey/${this.props.match.params.surveyId}/flow/${n}/vote/`;
-      this.dynamicConfig.addRedirect(nextUrl);
-      this.props.history.push(nextUrl+this.dynamicConfig.getEncodedConfig());
+      this.props.history.push('/survey/' + this.props.match.params.surveyId + '/flow/' + n + '/vote/' + this.dynamicConfig.encodeConfig())
     }
   }
 
   navigateTab(tab) {
-    this.props.history.push('/survey/' + this.props.match.params.surveyId + '/flow/' + this.props.match.params.itemNumber + '/' + tab + '/' + this.dynamicConfig.getEncodedConfig())
+    this.props.history.push('/survey/' + this.props.match.params.surveyId + '/flow/' + this.props.match.params.itemNumber + '/' + tab + '/' + this.dynamicConfig.encodeConfig())
   }
 
   navigateEnd() {
-    this.props.history.push('/survey/' + this.props.match.params.surveyId + '/end/' + this.dynamicConfig.getEncodedConfig())
+    this.props.history.push('/survey/' + this.props.match.params.surveyId + '/end/' + this.dynamicConfig.encodeConfig())
   }
 
   navigateEnd2() {
-    this.props.history.push('/survey/' + this.props.match.params.surveyId + '/end2/' + this.dynamicConfig.getEncodedConfig())
+    this.props.history.push('/survey/' + this.props.match.params.surveyId + '/end2/' + this.dynamicConfig.encodeConfig())
   }
 
   render() {

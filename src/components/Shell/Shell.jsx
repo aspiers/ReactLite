@@ -144,6 +144,17 @@ const styles = {
 }
 
 
+function getDynamicConfig(url) {
+  let parts = url.split("/");
+  let last_part = parts[parts.length - 1];
+  let first_two_chars = last_part.substring(0, 2)
+  if (first_two_chars === "%7") {
+    return last_part;
+  } else {
+    return null;
+  }
+}
+
 
 @inject("UserStore",  "QuestionStore")
 @observer
@@ -156,7 +167,6 @@ export default class Shell extends Component {
       modalOpened: false,
       open: false
     };
-    this.dynamicConfig = DynamicConfigService;
     this.onLogout = this.onLogout.bind(this)
     this.navigateToLogin = this.navigateToLogin.bind(this)
 
@@ -210,7 +220,8 @@ export default class Shell extends Component {
 
 
   render() {
-    const raw_config = this.dynamicConfig.getDynamicConfig(this.props.history.location.pathname);
+    const raw_config = getDynamicConfig(this.props.history.location.pathname);
+    this.dynamicConfig = DynamicConfigService;
     if(raw_config) {
       this.dynamicConfig.setConfigFromRaw(raw_config)
     }

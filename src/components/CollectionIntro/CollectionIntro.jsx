@@ -38,19 +38,6 @@ import './CollectionIntro.css';
     }
   }
 
-  startVoting = () => {
-    const collectionId = parseInt(this.props.match.params.collectionId, 10);
-    const url = `/survey/${collectionId}/flow/0/vote/`;
-    this.dynamicConfig.addRedirect(url);
-    const dynamicConfigStr = this.dynamicConfig.getEncodedConfig();
-
-    if(!this.props.UserStore.userData.has("id")){
-      this.props.history.push("/login/" + this.dynamicConfig.getEncodedConfig());
-    } else {
-      this.props.history.push(url+dynamicConfigStr)
-    }
-  }
-
   render() {
 
     let collectionId = parseInt(this.props.match.params.collectionId, 10);
@@ -127,8 +114,13 @@ import './CollectionIntro.css';
                   />}
                 {collection ?
                   collection.question_count  ?
-                    <RaisedButton label="Start" primary onClick={this.startVoting} style={{marginTop: 15}}/>
-                    :
+                    <Link to={ this.props.match.params.dynamicConfig ?
+                      ("/survey/" + collection.id + "/flow/0/vote/" + this.dynamicConfig.encodeConfig()) :
+                      ("/survey/" + collection.id + "/flow/0/vote/") }
+                    >
+                      <RaisedButton label="Start" style={{marginTop: 15}} primary />
+                    </Link> :
+
                     <div>
                       <div> ---------- </div>
                       <h3 >Sorry,  there are no questions currently in this survey</h3>
