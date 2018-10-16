@@ -61,7 +61,7 @@ const CollectionsList = inject("CollectionStore", "UserStore")(observer(({ Colle
       <div>
         <div className="imageContainer"
              style={{
-               background: 'url(/img/montage.jpg)',
+               background: 'url(/img/Brexitometer.png)',
                padding: '70px 0 90px 0'
              }} >
           <div className="contentBox">

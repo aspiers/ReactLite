@@ -104,7 +104,7 @@ import './CollectionIntro.css';
 
       outerStyle.backgroundColor = 'rgba(0,0,0,1)';
       if(this.state.collectionImageLoaded) {
-        imageStyle.backgroundImage = 'url(/img/montage.jpg)';
+        imageStyle.backgroundImage = 'url(/img/Brexitometer.jpg)';
         outerStyle.backgroundColor = 'rgba(0,0,0,0)';
       }
       outerStyle.color = 'white';
