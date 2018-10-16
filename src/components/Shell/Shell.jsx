@@ -317,23 +317,6 @@ export default class Shell extends Component {
 
                     <ListItem key='menuItem-2' primaryText="What's this?" leftIcon={<RemoveRedEye />} onTouchTap={() => this.toggleIntro()} />
                     <ListItem key='menuItem-3' primaryText="Share" leftIcon={<Share />} onTouchTap={this.clickFB} />
-                    <Divider />
-
-                    <ListItem key='menuItem-14'
-                      primaryText="About"
-                      initiallyOpen={false}
-                      primaryTogglesNestedList={true}
-                      nestedItems={[
-                        <ListItem className='menuItem' key='nestedItem-8' primaryText="News" href="https://represent.me/news/" /> ,
-                        <ListItem className='menuItem' key='nestedItem-1' primaryText="Get involved" href="https://represent.me/volunteer" />,
-                        <ListItem className='menuItem' key='nestedItem-2' primaryText="Donate" href="https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&amp;hosted_button_id=2MD34EJQFC7ME" />,
-                        <ListItem className='menuItem' key='nestedItem-3' primaryText="Statistics" href="Statistics" />,
-                        <ListItem className='menuItem' key='nestedItem-4' primaryText="API" href=" https://represent.me/api" />,
-                        <ListItem className='menuItem' key='nestedItem-5' primaryText="About us" href="https://represent.me" />,
-                        <ListItem className='menuItem' key='nestedItem-6' primaryText="Privacy policy" href="https://represent.me/legal/privacy-policy/" />,
-                        <ListItem className='menuItem' key='nestedItem-7' primaryText="Terms" href="https://represent.me/legal/terms/" /> ,
-                      ]}
-                    />
                   </List>
                   <Divider />
                   {this.breakpoints.sm && <ListItem primaryText="Close menu" leftIcon={<Close />} onTouchTap={this.handleToggle} />}

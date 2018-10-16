@@ -16,48 +16,6 @@ const CollectionsList = inject("CollectionStore", "UserStore")(observer(({ Colle
 
   return (
     <div>
-
-
- {!UserStore.isLoggedIn() && <div className="aboutus clear">
-
-    <h2><strong> Represent believes a more effective democracy is within reach </strong></h2>
-
-    <div  className="aboutus_right">
-
-      <img src="https://i1.wp.com/represent.me/wp-content/uploads/results.gif" alt="chatbot" />
-
-    </div>
-
-    <div  className="aboutus_left">
-
-
-    <p><strong>
-      Represent gives your views and values a voice.
-      </strong>
-    </p>
-    <p>
-      One central place to vote on the issues and work with the politicians and groups you trust to represent you.
-    </p>
-    <p>
-      Represent is free, open to everyone, anonymous and secure.
-
-      We are your trusted partner, making our combined voices more powerful and effective
-      to create the world we want.
-    </p>
-
-
-
-
-
-
-    <div>
-     <RaisedButton label="Sign Up" onClick={() => history.push('/login')} style={{marginRight: 10}}/>
-     <RaisedButton label="Features" primary={true} href="https://represent.me/features/" target="_blank"  />
-    </div>
-
-    </div>
- </div>}
-
       <div>
         <div className="imageContainer"
              style={{
