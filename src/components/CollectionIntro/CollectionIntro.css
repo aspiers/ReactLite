@@ -6,9 +6,9 @@
 }
 
 .contentBox {
-    max-width: 600px;
+    width: 80%;
     margin: 0 3vw;
-    background: rgba(0,0,0,0.6);
+    background: rgba(0, 0, 0, 0.7);
     /*background: rgba(27,137,174, 0.85);*/
     /*background: rgba(255,255,255,0.7);*/
     padding: 10px 10px 20px 10px;

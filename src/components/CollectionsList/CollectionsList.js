@@ -19,12 +19,12 @@ const CollectionsList = inject("CollectionStore", "UserStore")(observer(({ Colle
       <div>
         <div className="imageContainer"
              style={{
-               background: 'url(/img/Brexitometer.png)',
-               padding: '70px 0 90px 0'
+               background: 'url(/img/Brexitometer.png) no-repeat center',
+               padding: '1% 10% 38% 10%'
              }} >
           <div className="contentBox">
 
-            <h1 style={{ maxWidth: '600px', display: '-webkit-inline-box' }}>
+            <h1 style={{ width: '80%', display: '-webkit-inline-box' }}>
               What do <em>you</em> think about Brexit?
             </h1>
 
