@@ -67,13 +67,12 @@ const CollectionsList = inject("CollectionStore", "UserStore")(observer(({ Colle
           <div className="contentBox">
 
             <h1 style={{ maxWidth: '600px', display: '-webkit-inline-box' }}>
-              What kind of Brexit would suit me best?
+              What do <em>you</em> think about Brexit?
             </h1>
 
             <p>
               Take a short quiz to find out whether your views on Brexit
-              match up with your opinions on various issues the country faces,
-              and also how your views match with various well-known MPs.
+              match up with other people's.
             </p>
 
             <p>
