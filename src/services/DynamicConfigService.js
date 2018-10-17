@@ -54,8 +54,9 @@ class DynamicConfigService {
   }
 
   encodeConfig(rawConfig) {
-    this.config.redirects.push(rawConfig);
-    return encodeURIComponent(JSON.stringify(this.config))
+    //this.config.redirects.push(rawConfig);
+      //return encodeURIComponent(JSON.stringify(this.config))
+      return "";
   }
 
   getNextConfigWithRedirect(url) {
