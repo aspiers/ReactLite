@@ -132,13 +132,13 @@ import './SurveyFlow.css'
   navigateNext() {
     const { match } = this.props;
     const { itemNumber } = match.params;
-    this.navigateN(parseInt(itemNumber) + 1);
+    this.navigateN(parseInt(itemNumber, 10) + 1);
   }
 
   navigatePrevious() {
     const { match } = this.props;
     const { itemNumber } = match.params;
-    this.navigateN(parseInt(itemNumber) - 1);
+    this.navigateN(parseInt(itemNumber, 10) - 1);
   }
 
   navigateN(itemNumber) {
