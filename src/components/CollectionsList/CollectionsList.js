@@ -8,50 +8,55 @@ import './CollectionsList.css';
 
 
 
-const CollectionsList = inject("CollectionStore", "UserStore")(observer(({ CollectionStore, UserStore, history }) => {
+@inject("CollectionStore", "UserStore")
+@observer
+class CollectionsList extends React.Component {
+  render() {
+    const { history, UserStore, CollectionStore } = this.props;
 
-  if (CollectionStore.collections.size <= 0) {
-    return null;
-  }
+    if (CollectionStore.collections.size <= 0) {
+      return null;
+    }
 
-  return (
-    <div>
+    return (
       <div>
-        <div className="imageContainer"
-             style={{
-               background: 'url(/img/Brexitometer.png) no-repeat center',
-               padding: '1% 10% 38% 10%'
-             }} >
-          <div className="contentBox">
+        <div>
+          <div className="imageContainer"
+               style={{
+                 background: 'url(/img/montage.jpg)',
+                 padding: '70px 0 90px 0'
+               }}>
+            <div className="contentBox">
 
-            <h1 style={{ width: '80%', display: '-webkit-inline-box' }}>
-              What do <em>you</em> think about Brexit?
-            </h1>
+              <h1 style={{ maxWidth: '600px', display: '-webkit-inline-box' }}>
+                What kind of Brexit would suit me best?
+              </h1>
 
-            <p>
-              Take a short quiz to find out whether your views on Brexit
-              match up with other people's.
-            </p>
+              <p>
+                Take a short quiz to find out whether your views on Brexit
+                match up with other people's.
+              </p>
 
-            <p>
-              You may be surprised by the results!
-            </p>
+              <p>
+                You may be surprised by the results!
+              </p>
 
-            <RaisedButton
-              label="Start"
-              primary
-              href="/survey/149/flow/0/vote/"
-              style={{marginTop: 15}}
+              <RaisedButton
+                label="Start"
+                primary
+                href="/survey/149/flow/0/vote/"
+                style={{ marginTop: 15 }}
               />
 
+            </div>
           </div>
-        </div>
 
+        </div>
+        <OgTags />
       </div>
-      <OgTags />
-    </div>
-  );
-}))
+    );
+  }
+}
 
 const OgTags = () => {
   const og = {
