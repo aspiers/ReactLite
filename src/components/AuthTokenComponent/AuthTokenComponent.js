@@ -19,6 +19,8 @@ class AuthTokenComponent extends Component {
         // props.history.push('/login/' + match.params.redirect);
         // TODO store redirect in state properly here - @jimbofreedman
       });
+
+    return "AuthTokenComponent";
   }
 }
 
