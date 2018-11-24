@@ -1,11 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { RouterStore, syncHistoryWithStore } from 'mobx-react-router';
-import createBrowserHistory from 'history/createBrowserHistory';
 import Shell from './components/Shell';
 import injectTapEventPlugin from 'react-tap-event-plugin';
 import { Provider } from 'mobx-react';
-import { Router } from 'react-router';
 
 import axios from 'axios';
 // import DevTools, { setLogEnabled } from 'mobx-react-devtools';
@@ -40,7 +38,9 @@ window.authSettings = {
 
   googleMapsAPI: "AIzaSyDZxI6243Bb460yabWL_tyN97NBH6hsnwo",
 }
-if(location.host.indexOf('staging') !== -1 || location.host.indexOf('localhost') !== -1) {
+if(location.host.indexOf('staging') !== -1 ||
+   location.host.indexOf('localhost') !== -1 ||
+   location.host.indexOf('127.0.0.1') !== -1) {
   window.authSettings.facebookId = 510916936048320;
   window.API = axios.create({
     baseURL: 'https://api.represent.me'

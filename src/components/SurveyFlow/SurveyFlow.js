@@ -103,7 +103,6 @@ import './SurveyFlow.css'
   }
 
   onVote(i, votingMode) {
-    const { history } = this.props;
     if(!this.props.UserStore.userData.has("id")){
       this.props.history.push("/login/");
     } else {

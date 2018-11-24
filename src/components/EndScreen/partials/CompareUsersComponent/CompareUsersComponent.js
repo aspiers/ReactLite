@@ -199,34 +199,34 @@ class CompareCollectionUsers extends Component {
       this.viewData.pageReadiness.isCompareUsersReady.set(true);
     }
 
-    const setCandidatesStat = () => {
-      //candidates shown by default
-      this.viewData.areLocalCandidatesShowing.set(true);
-      //let candidatesIds = [17351, 17663, 17667, 17687, 17689, 17710, 17711, 17692];
-      //let candidatesIds = this.dynamicConfig.config.survey_end.candidatesIds;
-      // TODo candidateids - @jimbofreedman
-      let candidatesIds = [];
-      UserStore.getUsersById(candidatesIds).then((usersData) => {
-        usersData.results.ids.forEach((id) => {
-          this.viewData.candidates.push(usersData.results[id])
-        })
-        this.viewData.pageReadiness.isCompareCandidatesReady.set(true);
-      })
-
-      candidatesIds = candidatesIds.concat(this.viewData.candidates.map(user => { return user.id }));
-
-      UserStore.amFollowingUsers(currentUserId, candidatesIds).then(res => {
-        const results = res.results;
-        results.forEach(({ following, id }) => this.viewData.followingCandidates.set(following, id))
-      })
-      UserStore.compareMultipleUsers(currentUserId, candidatesIds).then((compareData) => {
-        candidatesIds.forEach((id) => {
-          this.viewData.compareCandidatesData.set(id, compareData.results[id])
-        })
-        this.viewData.pageReadiness.isCompareCandidatesReady.set(true);
-      })
-    }
-
+    // const setCandidatesStat = () => {
+    //   //candidates shown by default
+    //   this.viewData.areLocalCandidatesShowing.set(true);
+    //   //let candidatesIds = [17351, 17663, 17667, 17687, 17689, 17710, 17711, 17692];
+    //   //let candidatesIds = this.dynamicConfig.config.survey_end.candidatesIds;
+    //   // TODo candidateids - @jimbofreedman
+    //   let candidatesIds = [];
+    //   UserStore.getUsersById(candidatesIds).then((usersData) => {
+    //     usersData.results.ids.forEach((id) => {
+    //       this.viewData.candidates.push(usersData.results[id])
+    //     })
+    //     this.viewData.pageReadiness.isCompareCandidatesReady.set(true);
+    //   })
+    // 
+    //   candidatesIds = candidatesIds.concat(this.viewData.candidates.map(user => { return user.id }));
+    // 
+    //   UserStore.amFollowingUsers(currentUserId, candidatesIds).then(res => {
+    //     const results = res.results;
+    //     results.forEach(({ following, id }) => this.viewData.followingCandidates.set(following, id))
+    //   })
+    //   UserStore.compareMultipleUsers(currentUserId, candidatesIds).then((compareData) => {
+    //     candidatesIds.forEach((id) => {
+    //       this.viewData.compareCandidatesData.set(id, compareData.results[id])
+    //     })
+    //     this.viewData.pageReadiness.isCompareCandidatesReady.set(true);
+    //   })
+    // }
+    //
     // TODO user stats - @jimbofreedman
     // UserStore.getCachedMe().then(user => {
     //   if (this.dynamicConfig.config.survey_end.should_show_compare_candidates && user.district) {

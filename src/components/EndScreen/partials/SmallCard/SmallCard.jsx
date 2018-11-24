@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { observer, inject } from "mobx-react";
+import { observer } from "mobx-react";
 import {Card} from 'material-ui/Card';
 
 import ChangeAnswer from 'material-ui/svg-icons/action/autorenew';

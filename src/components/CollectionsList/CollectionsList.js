@@ -12,7 +12,7 @@ import './CollectionsList.css';
 @observer
 class CollectionsList extends React.Component {
   render() {
-    const { history, UserStore, CollectionStore } = this.props;
+    const { CollectionStore } = this.props;
 
     if (CollectionStore.collections.size <= 0) {
       return null;

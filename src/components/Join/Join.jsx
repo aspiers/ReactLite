@@ -144,7 +144,7 @@ const styles = {
   }
 
   attemptJoin() {
-    const { history, location } = this.props;
+    const { history } = this.props;
 
     let problems = [];
 

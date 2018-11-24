@@ -7,7 +7,7 @@ import PostLoginRedirect from '../PostLoginRedirect';
 class AuthTokenComponent extends Component {
 
   render() {
-    const { history, match, UserStore } = this.props;
+    const { match, UserStore } = this.props;
 
     let authtoken = match.params.authtoken;
 
